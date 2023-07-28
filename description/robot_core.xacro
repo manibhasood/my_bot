@@ -2,6 +2,7 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
 
     <xacro:include filename="inertial_macros.xacro"/>
+    <xacro:include filename="gazebo_control.xacro"/>
 
     <material name="white">
         <color rgba="1 1 1 1" />
@@ -54,6 +55,10 @@
         </xacro:inertial_box>
     </link>
 
+    <gazebo reference="chassis_link"> 
+        <material>Gazebo/White</material>
+    </gazebo>
+
     <!-- left wheel Link -->
 
     <joint name="leftwheel_joint" type="continuous">
@@ -82,6 +87,10 @@
             <origin xyz="0 0 0" rpy="0 0 0"/>
         </xacro:inertial_cylinder>
     </link>
+
+    <gazebo reference="leftwheel_link"> 
+        <material>Gazebo/Blue</material>
+    </gazebo>
 
     <!-- right wheel Link -->
 
@@ -112,6 +121,10 @@
         </xacro:inertial_cylinder>
     </link>
 
+    <gazebo reference="rightwheel_link"> 
+        <material>Gazebo/Blue</material>
+    </gazebo>
+
     <!-- Caster wheel link-->
 
     <joint name="casterwheel_joint" type="fixed">
@@ -138,4 +151,11 @@
             <origin xyz="0 0 0" rpy="0 0 0"/>
         </xacro:inertial_sphere>
     </link>
+
+    <gazebo reference="casterwheel_link"> 
+        <material>Gazebo/Black</material>
+        <mu1 value="0.001"/>
+        <mu2 value="0.001"/>
+    </gazebo>
+
 </robot>
